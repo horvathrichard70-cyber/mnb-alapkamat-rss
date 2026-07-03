@@ -1,0 +1,53 @@
+name: MNB alapkamat RSS frissítés
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # minden nap 6:00 UTC (8:00 magyar idő nyáron)
+  workflow_dispatch:        # kézi indítás is lehetséges a GitHub felületéről
+
+permissions:
+  contents: write
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Függőségek telepítése
+        run: pip install requests openpyxl
+
+      - name: RSS generálása és változás-ellenőrzés
+        id: gen
+        run: |
+          python mnb_alapkamat_rss.py
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+        continue-on-error: true
+
+      - name: Commit, ha változott a fájl
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add rss.xml last_rate.txt
+          git diff --staged --quiet || git commit -m "RSS frissítés: $(date -u +%F)"
+          git push
+
+      - name: Értesítő e-mail küldése, ha változott a kamat
+        if: steps.gen.outputs.exit_code == '2'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "Változott az MNB jegybanki alapkamat"
+          to: ${{ secrets.NOTIFY_EMAIL }}
+          from: MNB alapkamat figyelő
+          body: |
+            Változott a jegybanki alapkamat.
+            Részletek az RSS feedben: https://<felhasznalonev>.github.io/<repo-nev>/rss.xml
+            Forrás: https://www.mnb.hu/Jegybanki_alapkamat_alakulasa
