@@ -49,5 +49,5 @@ jobs:
           from: MNB alapkamat figyelő
           body: |
             Változott a jegybanki alapkamat.
-            Részletek az RSS feedben: https://<felhasznalonev>.github.io/<repo-nev>/rss.xml
+            Részletek az RSS feedben: https://github.com/horvathrichard70-cyber/mnb-alapkamat-rss/actions
             Forrás: https://www.mnb.hu/Jegybanki_alapkamat_alakulasa
