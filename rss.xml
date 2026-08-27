@@ -4,7 +4,14 @@
     <title>MNB jegybanki alapkamat</title>
     <link>https://www.mnb.hu/Jegybanki_alapkamat_alakulasa</link>
     <description>A Magyar Nemzeti Bank jegybanki alapkamatának alakulása</description>
-    <lastBuildDate>Wed, 26 Aug 2026 06:55:12 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2026 17:28:42 +0000</lastBuildDate>
+    <item>
+      <title>Jegybanki alapkamat: 5,50%</title>
+      <link>https://www.mnb.hu/Jegybanki_alapkamat_alakulasa</link>
+      <guid isPermaLink="false">mnb-alapkamat-2026-08-26</guid>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+      <description>Jegybanki alapkamat: 5,50%, hatályos: 2026.08.26.</description>
+    </item>
     <item>
       <title>Jegybanki alapkamat: 5,75%</title>
       <link>https://www.mnb.hu/Jegybanki_alapkamat_alakulasa</link>
@@ -207,13 +214,6 @@
       <guid isPermaLink="false">mnb-alapkamat-2021-08-25</guid>
       <pubDate>Wed, 25 Aug 2021 00:00:00 +0000</pubDate>
       <description>Jegybanki alapkamat: 1,50%, hatályos: 2021.08.25.</description>
-    </item>
-    <item>
-      <title>Jegybanki alapkamat: 1,20%</title>
-      <link>https://www.mnb.hu/Jegybanki_alapkamat_alakulasa</link>
-      <guid isPermaLink="false">mnb-alapkamat-2021-07-28</guid>
-      <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
-      <description>Jegybanki alapkamat: 1,20%, hatályos: 2021.07.28.</description>
     </item>
   </channel>
 </rss>
